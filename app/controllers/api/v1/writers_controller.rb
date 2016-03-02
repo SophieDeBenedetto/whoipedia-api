@@ -6,7 +6,7 @@ module Api
       end
 
       def show
-        riter = Writer.find(params[:id])
+        writer = Writer.find(params[:id])
         render json: writer
       end
     end
