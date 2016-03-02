@@ -9,6 +9,7 @@ gem 'spring', :group => :development
 
 
 gem 'pg'
+gem 'pry'
 
 gem 'devise'
 gem 'rack-cors'
