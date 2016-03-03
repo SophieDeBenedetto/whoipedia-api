@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       resources :episodes, except: [:new, :edit]
       resources :writers, except: [:new, :edit]
       get "users/me", to: "users#me"
+      post "users", to: "users#create"
     end
   end
 end
