@@ -10,6 +10,16 @@ class Episode < ActiveRecord::Base
     self.save
   end 
 
+  def self.new_from_params(params)
+    self.create.tap do |episode|
+      episode.name = params[:name]
+      episode.air_date = params[:air_date]
+      episode.description = params[:description]
+      episode.season = Season.find(params[:season][:id])
+      episode.save
+    end
+  end
+
   private
 
     def update_writer(params)

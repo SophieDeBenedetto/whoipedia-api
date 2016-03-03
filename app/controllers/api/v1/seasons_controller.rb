@@ -9,6 +9,10 @@ module Api
         season = Season.find(params[:id])
         render json: season
       end
+
+      def update
+        binding.pry
+      end
     end
   end
 end

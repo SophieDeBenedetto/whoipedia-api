@@ -16,10 +16,15 @@ module Api
         render json: episode
       end
 
+      def create
+        episode = Episode.new_from_params(episode_params)
+        render json: episode
+      end
+
       private
 
         def episode_params
-          params.require(:episode).permit(:name, :air_date, :description, :writers => [:id, :name], :season => [:number])
+          params.require(:episode).permit(:name, :air_date, :description, :writers => [:id, :name], :season => [:id, :number])
         end
     end
   end
