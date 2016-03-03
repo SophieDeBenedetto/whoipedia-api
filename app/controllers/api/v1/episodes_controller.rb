@@ -7,7 +7,6 @@ module Api
 
       def show
         episode = Episode.find(params[:id])
-        episode.update_from_params(episode_params)
         render json: episode
       end
 
