@@ -16,12 +16,10 @@ class Episode < ActiveRecord::Base
       params[:writers].each do |ep_writer|
         writer = Writer.find(ep_writer[:id])
         writer.update(name: ep_writer[:name])
-        binding.pry
       end
     end
 
     def update_attrs(params)
-      binding.pry
       self.name = params[:name]
       self.air_date = params[:air_date]
       self.description = params[:description]
