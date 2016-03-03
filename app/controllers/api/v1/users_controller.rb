@@ -10,7 +10,7 @@ module Api
 
       def create
         user = User.create(user_params)
-        render json: {user: {emai: user.email, password: user.password}}
+        render json: {user: {email: user.email, password: user.password}}
       end
 
       private

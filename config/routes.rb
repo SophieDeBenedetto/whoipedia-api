@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :seasons, except: [:new, :edit]
-      resources :episodes, except: [:new, :edit]
+      resources :episodes
       resources :writers, except: [:new, :edit]
       get "users/me", to: "users#me"
       post "users", to: "users#create"
