@@ -21,6 +21,11 @@ module Api
         render json: episode
       end
 
+      def destroy
+        episode = Episode.find(params[:id])
+        episode.destroy
+      end
+
       private
 
         def episode_params
