@@ -5,7 +5,7 @@ class Episode < ActiveRecord::Base
 
   def update_from_params(params)
     update_attrs(params)
-    update_writer(params)
+    update_writers(params)
     update_season(params)
     self.save
   end 
@@ -22,12 +22,16 @@ class Episode < ActiveRecord::Base
 
   private
 
-    def update_writer(params)
-      params[:writers].each do |ep_writer|
-        writer = Writer.find(ep_writer[:id])
-        writer.update(name: ep_writer[:name])
-      end
+    def update_writers(params)
+      self.writer_ids = params[:writer_ids]
     end
+
+    # def update_writer(params)
+    #   params[:writers].each do |ep_writer|
+    #     writer = Writer.find(ep_writer[:id])
+    #     writer.update(name: ep_writer[:name])
+    #   end
+    # end
 
     def update_attrs(params)
       self.name = params[:name]

@@ -29,7 +29,7 @@ module Api
       private
 
         def episode_params
-          params.require(:episode).permit(:name, :air_date, :description, :writers => [:id, :name], :season => [:id, :number])
+          params.require(:episode).permit(:name, :air_date, :description, :writer_ids => [], :season => [:id, :number])
         end
     end
   end
