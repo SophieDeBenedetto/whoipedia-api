@@ -120,6 +120,7 @@ GEM
       thread_safe (~> 0.1)
     warden (1.2.3)
       rack (>= 1.0)
+    wikipedia-client (1.6.1)
 
 PLATFORMS
   ruby
@@ -127,12 +128,14 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers
   devise
+  nokogiri
   pg
   pry
   rack-cors
   rails (= 4.2.5.1)
   rails-api
   spring
+  wikipedia-client
 
 BUNDLED WITH
    1.11.2

@@ -14,6 +14,8 @@ gem 'pry'
 gem 'devise'
 gem 'rack-cors'
 gem 'active_model_serializers'
+gem 'nokogiri'
+gem 'wikipedia-client'
 
 
 
