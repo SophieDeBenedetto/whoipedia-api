@@ -16,6 +16,7 @@ gem 'rack-cors'
 gem 'active_model_serializers'
 gem 'nokogiri'
 gem 'wikipedia-client'
+gem 'rails_12factor'
 
 
 
