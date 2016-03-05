@@ -34,15 +34,10 @@
 require 'nokogiri'
 require 'open-uri'
 
-season = Season.create(number: 1, start_date: "26 March 2005", end_date: "18 June 2005", doctor: "Christopher Eccleston")
+# SEASON ONE
+
+season_one = Season.create(number: 1, start_date: "26 March 2005", end_date: "18 June 2005", doctor: "Christopher Eccleston")
 doc = Nokogiri::HTML(open('https://en.wikipedia.org/wiki/Doctor_Who_(series_1)'))
-# binding.pry
-# doc.css('table .vevent').first.text
-
-
-# name = episode_data[3].gsub /"/, ''
-# writer = episode_data[5]
-# season = Season.first
 doc.css('table .vevent').each_with_index do |table_row, i|
   ep_data = table_row.text.split("\n")
   ep = Episode.new
@@ -51,16 +46,174 @@ doc.css('table .vevent').each_with_index do |table_row, i|
   ep.air_date = ep_data[ep_data.length - 4]
   ep.description = doc.css('table .description')[i].text.gsub( /"/, '')
   ep.save
-  season.episodes << ep
+  puts ep
+  season_one.episodes << ep
   ep.save
-  season.save
+  season_one.save
+end
+
+#SEASON TWO
+
+season_two = Season.create(number: 2, start_date: "15 April 2006", end_date: "8 July 2006", doctor: "David Tennant")
+doc = Nokogiri::HTML(open('https://en.wikipedia.org/wiki/Doctor_Who_(series_2)'))
+doc.css('table .vevent').each_with_index do |table_row, i|
+  ep_data = table_row.text.split("\n")
+  if ep_data.length >= 9 
+    ep = Episode.new
+    ep.name = ep_data[ep_data.length - 7].gsub /"/, ''
+    ep.writers << Writer.find_or_create_by(name: ep_data[ep_data.length - 5])
+    ep.air_date = ep_data[ep_data.length - 4]
+    ep.description = doc.css('table .description')[i].text.gsub( /"/, '')
+    ep.save
+    season_two.episodes << ep
+    ep.save
+    puts ep
+    season_two.save
+  end
+end
+
+# SEASON THREE
+
+season_three = Season.create(number: 3, start_date: "31 March 2007", end_date: "30 June 2007", doctor: "David Tennant")
+doc = Nokogiri::HTML(open('https://en.wikipedia.org/wiki/Doctor_Who_(series_3)'))
+doc.css('table .vevent').each_with_index do |table_row, i|
+  ep_data = table_row.text.split("\n")
+  if ep_data.length >= 9 
+    ep = Episode.new
+    ep.name = ep_data[ep_data.length - 7].gsub /"/, ''
+    ep.writers << Writer.find_or_create_by(name: ep_data[ep_data.length - 5])
+    ep.air_date = ep_data[ep_data.length - 4]
+    ep.description = doc.css('table .description')[i].text.gsub( /"/, '')
+    ep.save
+    season_three.episodes << ep
+    ep.save
+    puts ep
+    season_three.save
+  end
 end
 
 
-# doc.css('table .description').first.text.gsub( /"/, '')
+#SEASON Four
 
-# require 'wikipedia'
-# page = Wikipedia.find( 'https://en.wikipedia.org/wiki/Doctor_Who_(series_1)' )
+season_four = Season.create(number: 4, start_date: "5 April 2008", end_date: "5 July 2008", doctor: "David Tennant")
+doc = Nokogiri::HTML(open('https://en.wikipedia.org/wiki/Doctor_Who_(series_4)'))
+doc.css('table .vevent').each_with_index do |table_row, i|
+  ep_data = table_row.text.split("\n")
+  if ep_data.length >= 9 
+    ep = Episode.new
+    ep.name = ep_data[ep_data.length - 7].gsub /"/, ''
+    ep.writers << Writer.find_or_create_by(name: ep_data[ep_data.length - 5])
+    ep.air_date = ep_data[ep_data.length - 4]
+    ep.description = doc.css('table .description')[i].text.gsub( /"/, '')
+    ep.save
+    season_four.episodes << ep
+    ep.save
+    puts ep
+    season_four.save
+  end
+end
+
+# SEASON FIVE
+
+season_five = Season.create(number: 5, start_date: "3 April 2010", end_date: "26 June 2010", doctor: "Matt Smith")
+doc = Nokogiri::HTML(open('https://en.wikipedia.org/wiki/Doctor_Who_(series_5)'))
+doc.css('table .vevent').each_with_index do |table_row, i|
+  ep_data = table_row.text.split("\n")
+  if ep_data.length >= 9 
+    ep = Episode.new
+    ep.name = ep_data[ep_data.length - 7].gsub /"/, ''
+    ep.writers << Writer.find_or_create_by(name: ep_data[ep_data.length - 5])
+    ep.air_date = ep_data[ep_data.length - 4]
+    ep.description = doc.css('table .description')[i].text.gsub( /"/, '')
+    ep.save
+    season_five.episodes << ep
+    ep.save
+    puts ep
+    season_five.save
+  end
+end
+
+# SEASON Six
+
+season_six = Season.create(number: 6, start_date: "23 April 2011", end_date: "1 October 2011", doctor: "Matt Smith")
+doc = Nokogiri::HTML(open('https://en.wikipedia.org/wiki/Doctor_Who_(series_6)'))
+doc.css('table .vevent').each_with_index do |table_row, i|
+  ep_data = table_row.text.split("\n")
+  if ep_data.length >= 9 
+    ep = Episode.new
+    ep.name = ep_data[ep_data.length - 7].gsub /"/, ''
+    ep.writers << Writer.find_or_create_by(name: ep_data[ep_data.length - 5])
+    ep.air_date = ep_data[ep_data.length - 4]
+    ep.description = doc.css('table .description')[i].text.gsub( /"/, '')
+    ep.save
+    season_six.episodes << ep
+    ep.save
+    puts ep
+    season_six.save
+  end
+end
+
+
+# SEASON SEVEN
+
+season_seven = Season.create(number: 7, start_date: "1 September 2012", end_date: "18 May 2013", doctor: "Matt Smith")
+doc = Nokogiri::HTML(open('https://en.wikipedia.org/wiki/Doctor_Who_(series_7)'))
+doc.css('table .vevent').each_with_index do |table_row, i|
+  ep_data = table_row.text.split("\n")
+  if ep_data.length >= 9 
+    ep = Episode.new
+    ep.name = ep_data[ep_data.length - 6].gsub /"/, ''
+    ep.writers << Writer.find_or_create_by(name: ep_data[ep_data.length - 4])
+    ep.air_date = ep_data[ep_data.length - 3]
+    ep.description = doc.css('table .description')[i].text.gsub( /"/, '')
+    ep.save
+    season_seven.episodes << ep
+    ep.save
+    puts ep
+    season_seven.save
+  end
+end
+
+# SEASON EIGHT
+
+season_eight = Season.create(number: 8, start_date: "23 August 2014", end_date: "8 November 2014", doctor: "Peter Capaldi")
+doc = Nokogiri::HTML(open('https://en.wikipedia.org/wiki/Doctor_Who_(series_8)'))
+doc.css('table .vevent').each_with_index do |table_row, i|
+  ep_data = table_row.text.split("\n")
+  if ep_data.length >= 9 
+    ep = Episode.new
+    ep.name = ep_data[ep_data.length - 6].gsub /"/, ''
+    ep.writers << Writer.find_or_create_by(name: ep_data[ep_data.length - 4])
+    ep.air_date = ep_data[ep_data.length - 3]
+    ep.description = doc.css('table .description')[i].text.gsub( /"/, '')
+    ep.save
+    season_eight.episodes << ep
+    ep.save
+    puts ep
+    season_eight.save
+  end
+end
+
+
+# SEASON NINE
+
+season_nine = Season.create(number: 9, start_date: "19 September 2015", end_date: "5 December 2015", doctor: "Peter Capaldi")
+doc = Nokogiri::HTML(open('https://en.wikipedia.org/wiki/Doctor_Who_(series_9)'))
+doc.css('table .vevent').each_with_index do |table_row, i|
+  ep_data = table_row.text.split("\n")
+  if ep_data.length >= 9 
+    ep = Episode.new
+    ep.name = ep_data[ep_data.length - 6].gsub /"/, ''
+    ep.writers << Writer.find_or_create_by(name: ep_data[ep_data.length - 4])
+    ep.air_date = ep_data[ep_data.length - 3]
+    ep.description = doc.css('table .description')[i].text.gsub( /"/, '')
+    ep.save
+    season_nine.episodes << ep
+    ep.save
+    puts ep
+    season_nine.save
+  end
+end
 
 
 

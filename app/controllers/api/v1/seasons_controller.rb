@@ -11,7 +11,6 @@ module Api
       end
 
       def update
-        binding.pry
       end
     end
   end
