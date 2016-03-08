@@ -26,16 +26,15 @@ class SessionsController < Devise::SessionsController
 
 
   def create
-    # super do |user|
-    user = User.find_by(email: params[:user][:email])
-      if request.format.json? && (user.encrypted_password == BCrypt::Engine.hash_secret(params[:user][:password], user.encrypted_password))
+    super do |user|
+      if request.format.json?
         data = {
           token: user.authentication_token,
           email: user.email
         }
         render json: data, status: 201 and return
       end
-    # end
+    end
   end
 
   def me

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       resources :seasons, except: [:new, :edit]
       resources :episodes
       resources :writers, except: [:new, :edit]
+      get "seasonsmeta/aliens", to: "seasonsmeta#alien_metadata"
       get "users/me", to: "users#me"
       post "users", to: "users#create"
     end
