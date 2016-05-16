@@ -35,7 +35,7 @@ CORS is supported by Rack CORS gem
 
 in the Application Controller. 
 
-### Model Serialization
+#### Model Serialization
 
 This API is using Active Model Serializer to serialize model data. Note this line:
 
